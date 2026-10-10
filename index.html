@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Neon Interativo</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+    <!-- Painel de controles (Tag fechada corretamente com >) -->
+    <div class="controls">
+        <label>
+            Direção:
+            <select id="anim-dir">
+                <option value="horizontal">Horizontal (Esq -> Dir)</option>
+                <option value="vertical">Vertical (Baixo -> Cima)</option>
+                <option value="center">Centro (Expansão)</option>    
+            </select>
+        </label>
+
+        <label>
+            <input type="checkbox" id="sound-toggle" checked />
+            Efeitos Sonoros
+        </label>
+    </div>
+
+    <!-- Menu Principal (Variáveis --clr corrigidas e data-section adicionado) -->
+    <ul class="menu" id="menu">
+        <li><a href="#home" data-section="home" data-text="HOME" style="--clr:#00adef">HOME</a></li>
+        <li><a href="#about" data-section="about" data-text="ABOUT" style="--clr:#ff0044">ABOUT</a></li>
+        <li><a href="#services" data-section="services" data-text="SERVICES" style="--clr:#ffdd00">SERVICES</a></li>
+        <li><a href="#portfolio" data-section="portfolio" data-text="PORTFOLIO" style="--clr:#00ff66">PORTFOLIO</a></li>
+        <li><a href="#contact" data-section="contact" data-text="CONTACT" style="--clr:#ff00ff">CONTACT</a></li>
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+</html>

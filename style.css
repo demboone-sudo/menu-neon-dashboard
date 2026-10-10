@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #040814;
+    overflow: hidden;
+}
+
+/* Painel de Controles */
+.controls {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    gap: 20px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 24px;
+    border-radius: 30px; /* Corrigido o espaço: 30px */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9em; 
+}
+
+.controls select, .controls input {
+    cursor: pointer;
+}
+
+/* Menu Principal */
+ul.menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+ul.menu li {
+    position: relative;
+    list-style: none;
+    text-align: center;
+}
+
+ul.menu li a {
+    position: relative;
+    font-size: 3.5em; /* Removida a duplicata */
+    font-weight: 800;
+    text-decoration: none;
+    line-height: 1em;
+    letter-spacing: 2px; /* Corrigido de 1em para 2px */
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    transition: opacity 0.3s;
+}
+
+/* Base do pseudo-elemento */
+ul.menu li a::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--clr);
+    -webkit-text-stroke: 1px var(--clr);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+/* --- Direções de animação --- */
+
+/* 1. Horizontal (Padrão) */
+ul.menu.dir-horizontal li a::before {
+    width: 0%;
+    height: 100%;
+}
+ul.menu.dir-horizontal li a:hover::before {
+    width: 100%;
+    filter: drop-shadow(0 0 20px var(--clr));
+}
+
+/* 2. Vertical (Baixo para Cima) */
+ul.menu.dir-vertical li a::before {
+    width: 100%;
+    height: 0%;
+    top: auto;
+    bottom: 0;
+}
+ul.menu.dir-vertical li a:hover::before {
+    height: 100%; /* Corrigido de 100 para 100% */
+    filter: drop-shadow(0 0 20px var(--clr));
+}
+
+/* 3. Centro (Expansão) */
+ul.menu.dir-center li a::before {
+    width: 100%;
+    height: 100%;
+    clip-path: circle(0% at 50% 50%);
+}
+ul.menu.dir-center li a:hover::before {
+    clip-path: circle(100% at 50% 50%);
+    filter: drop-shadow(0 0 20px var(--clr));
+}
+
+/* Item Ativo/Clicado */
+ul.menu li a.active::before {
+    filter: drop-shadow(0 0 25px var(--clr));
+}
